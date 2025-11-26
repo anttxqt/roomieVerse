@@ -8,7 +8,7 @@ const slides = [
     title: "Tìm roommate chỉ trong 48 giờ",
     description: "Kết nối trực tiếp với người tìm phòng phù hợp. Không môi giới. Không phí ẩn.",
     highlight: "48 giờ",
-    bgColor: "bg-gradient-to-br from-[#FFE951] via-[#FFE951] to-[#FFD700]",
+    bgGradient: "linear-gradient(135deg, #F7A6FF 0%, #CA86FF 100%)", // Accent Pink to Purple
     emoji: "⚡",
   },
   {
@@ -16,7 +16,7 @@ const slides = [
     title: "97% người dùng hài lòng",
     description: "Cộng đồng chia sẻ nhà được chọn lọc kỹ càng. Chỉ người thật, tin thật.",
     highlight: "97%",
-    bgColor: "bg-gradient-to-br from-[#87CEEB] via-[#87CEEB] to-[#5FACCE]",
+    bgGradient: "linear-gradient(135deg, #6CA8FF 0%, #4A8DFF 100%)", // Primary Blue to Darker Blue
     emoji: "✨",
   },
   {
@@ -24,7 +24,7 @@ const slides = [
     title: "Hoàn toàn miễn phí",
     description: "Đăng tin, tìm kiếm, kết nối. Tất cả đều miễn phí 100%.",
     highlight: "0đ",
-    bgColor: "bg-gradient-to-br from-[#4ECDC4] via-[#4ECDC4] to-[#3AAFA9]",
+    bgGradient: "linear-gradient(135deg, #CA86FF 0%, #6CA8FF 100%)", // Purple to Blue
     emoji: "🎉",
   },
   {
@@ -32,7 +32,7 @@ const slides = [
     title: "Match theo lối sống",
     description: "Thuật toán thông minh giúp bạn tìm roommate có chung sở thích và thói quen.",
     highlight: "Smart Match",
-    bgColor: "bg-gradient-to-br from-[#FF6B6B] via-[#FF6B6B] to-[#EE5A52]",
+    bgGradient: "linear-gradient(135deg, #F7A6FF 0%, #6CA8FF 100%)", // Pink to Blue
     emoji: "🤝",
   },
 ];
@@ -115,7 +115,8 @@ export default function HeroCarousel() {
 
   return (
     <div
-      className="group relative mx-auto mb-8 max-w-7xl overflow-hidden rounded-2xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] md:mb-12 md:rounded-3xl lg:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] lg:hover:shadow-[20px_20px_0px_0px_rgba(0,0,0,1)]"
+      className="group relative mx-auto mb-8 max-w-7xl overflow-hidden border-3 border-black shadow-[8px_8px_0_rgba(0,0,0,0.13)] transition-all duration-300 hover:shadow-[12px_12px_0_rgba(0,0,0,0.13)] md:mb-12 lg:shadow-[10px_10px_0_rgba(0,0,0,0.13)] lg:hover:shadow-[14px_14px_0_rgba(0,0,0,0.13)]"
+      style={{ borderRadius: '20px' }}
       onMouseEnter={() => setIsAutoPlaying(false)}
       onMouseLeave={() => setIsAutoPlaying(true)}
       onTouchStart={handleTouchStart}
@@ -130,11 +131,9 @@ export default function HeroCarousel() {
         {slides.map((slide, index) => (
           <div
             key={slide.id}
-            className={`${slide.bgColor} relative flex min-w-full flex-col items-center justify-center px-6 py-16 text-center sm:px-8 sm:py-20 md:py-24 lg:py-32 xl:py-36`}
+            className="relative flex min-w-full flex-col items-center justify-center px-6 py-16 text-center sm:px-8 sm:py-20 md:py-24 lg:py-32 xl:py-36"
+            style={{ background: slide.bgGradient }}
           >
-            {/* Decorative gradient overlay for depth */}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/5 to-transparent" />
-
             {/* Content */}
             <div className="relative z-10 flex flex-col items-center">
               {/* Emoji with subtle animation */}
@@ -149,27 +148,34 @@ export default function HeroCarousel() {
 
               {/* Highlight badge */}
               <div
-                className={`mb-3 inline-block border-3 border-black bg-white px-4 py-1.5 text-lg font-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-700 sm:mb-4 sm:border-4 sm:px-6 sm:py-2 sm:text-xl sm:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:text-2xl lg:text-3xl ${
+                className={`mb-3 inline-block border-2 border-black bg-white px-6 py-2 text-lg font-bold shadow-[3px_3px_0_#000] transition-all duration-700 sm:mb-4 sm:px-8 sm:py-3 sm:text-xl md:text-2xl lg:text-3xl ${
                   currentSlide === index ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
                 }`}
-                style={{ transitionDelay: currentSlide === index ? "300ms" : "0ms" }}
+                style={{ 
+                  transitionDelay: currentSlide === index ? "300ms" : "0ms",
+                  borderRadius: '14px',
+                  color: 'var(--text-primary)'
+                }}
               >
                 {slide.highlight}
               </div>
 
               {/* Title */}
               <h2
-                className={`mb-3 max-w-4xl text-3xl font-black leading-tight transition-all duration-700 sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl ${
+                className={`mb-3 max-w-4xl text-3xl font-extrabold leading-tight text-white transition-all duration-700 sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl ${
                   currentSlide === index ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
                 }`}
-                style={{ transitionDelay: currentSlide === index ? "400ms" : "0ms" }}
+                style={{ 
+                  transitionDelay: currentSlide === index ? "400ms" : "0ms",
+                  fontFamily: 'Manrope, sans-serif'
+                }}
               >
                 {slide.title}
               </h2>
 
               {/* Description */}
               <p
-                className={`max-w-2xl text-base font-bold text-gray-800 transition-all duration-700 sm:text-lg md:text-xl lg:text-2xl ${
+                className={`max-w-2xl text-base font-medium text-white/95 transition-all duration-700 sm:text-lg md:text-xl lg:text-2xl ${
                   currentSlide === index ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
                 }`}
                 style={{ transitionDelay: currentSlide === index ? "500ms" : "0ms" }}
@@ -188,18 +194,22 @@ export default function HeroCarousel() {
             key={index}
             onClick={() => goToSlide(index)}
             disabled={isTransitioning}
-            className={`group/dot relative h-3 w-3 border-2 border-black transition-all duration-300 sm:h-4 sm:w-4 sm:border-3 ${
+            className={`group/dot relative h-3 w-3 border-2 border-black transition-all duration-300 sm:h-4 sm:w-4 ${
               currentSlide === index
-                ? "scale-110 bg-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
-                : "bg-white/90 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:scale-105 hover:bg-white"
+                ? "scale-110 shadow-[2px_2px_0_#000]"
+                : "bg-white/90 shadow-[2px_2px_0_#000] hover:scale-105 hover:bg-white"
             }`}
+            style={{ 
+              borderRadius: '50%',
+              backgroundColor: currentSlide === index ? 'var(--text-primary)' : undefined
+            }}
             aria-label={`Go to slide ${index + 1}`}
             aria-current={currentSlide === index}
           >
             {/* Progress bar for current slide */}
             {currentSlide === index && isAutoPlaying && (
               <div
-                className="absolute inset-0 bg-white/30"
+                className="absolute inset-0 bg-white/30 rounded-full"
                 style={{
                   animation: "progress 5s linear",
                 }}
@@ -213,7 +223,8 @@ export default function HeroCarousel() {
       <button
         onClick={prevSlide}
         disabled={isTransitioning}
-        className="absolute left-2 top-1/2 z-20 hidden -translate-y-1/2 border-3 border-black bg-white/95 p-2 text-xl font-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] backdrop-blur-sm transition-all duration-200 hover:scale-105 hover:bg-white hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:scale-95 disabled:opacity-50 sm:p-3 sm:text-2xl md:left-4 md:block lg:p-4 lg:text-3xl"
+        className="absolute left-2 top-1/2 z-20 hidden -translate-y-1/2 border-2 border-black bg-white/95 p-3 text-xl font-bold shadow-[3px_3px_0_#000] backdrop-blur-sm transition-all duration-200 hover:scale-105 hover:bg-white hover:shadow-[4px_4px_0_#000] active:scale-95 disabled:opacity-50 sm:text-2xl md:left-4 md:block lg:p-4 lg:text-3xl"
+        style={{ borderRadius: '14px', color: 'var(--text-primary)' }}
         aria-label="Previous slide"
       >
         ←
@@ -221,15 +232,20 @@ export default function HeroCarousel() {
       <button
         onClick={nextSlide}
         disabled={isTransitioning}
-        className="absolute right-2 top-1/2 z-20 hidden -translate-y-1/2 border-3 border-black bg-white/95 p-2 text-xl font-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] backdrop-blur-sm transition-all duration-200 hover:scale-105 hover:bg-white hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:scale-95 disabled:opacity-50 sm:p-3 sm:text-2xl md:right-4 md:block lg:p-4 lg:text-3xl"
+        className="absolute right-2 top-1/2 z-20 hidden -translate-y-1/2 border-2 border-black bg-white/95 p-3 text-xl font-bold shadow-[3px_3px_0_#000] backdrop-blur-sm transition-all duration-200 hover:scale-105 hover:bg-white hover:shadow-[4px_4px_0_#000] active:scale-95 disabled:opacity-50 sm:text-2xl md:right-4 md:block lg:p-4 lg:text-3xl"
+        style={{ borderRadius: '14px', color: 'var(--text-primary)' }}
         aria-label="Next slide"
       >
         →
       </button>
 
       {/* Auto-play indicator - only visible on hover on desktop */}
-      <div className="absolute right-4 top-4 z-20 hidden items-center gap-2 rounded-full border-2 border-black bg-white/90 px-3 py-1.5 text-xs font-bold opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100 lg:flex">
-        <div className={`h-2 w-2 rounded-full ${isAutoPlaying ? "bg-green-500" : "bg-gray-400"}`} />
+      <div className="absolute right-4 top-4 z-20 hidden items-center gap-2 border-2 border-black bg-white/90 px-3 py-1.5 text-xs font-bold opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100 lg:flex"
+        style={{ borderRadius: '14px', color: 'var(--text-primary)' }}>
+        <div 
+          className={`h-2 w-2 rounded-full`}
+          style={{ backgroundColor: isAutoPlaying ? 'var(--primary-blue)' : '#9CA3AF' }}
+        />
         <span>{isAutoPlaying ? "Auto" : "Paused"}</span>
       </div>
     </div>
