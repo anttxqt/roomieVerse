@@ -87,7 +87,7 @@ export default function SharePage() {
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center">
               <Image
-                src="/roomieverselogowpic.png"
+                src="/logo/logo1.png"
                 alt="roomieVerse"
                 width={480}
                 height={120}
@@ -338,19 +338,27 @@ export default function SharePage() {
       </div>
 
       {/* Footer */}
-      <footer className="mt-24 border-t-2 border-black bg-zinc-900 py-12 text-white">
-        <div className="mx-auto max-w-7xl px-6 text-center">
-          <p className="font-medium">© 2024 roomieVerse - Nền tảng tìm bạn share phòng #1 Việt Nam</p>
-          <div className="mt-6 flex justify-center gap-8 text-sm font-medium">
-            <Link href="/" className="text-blue-300 transition hover:text-blue-200">
-              Về chúng tôi
-            </Link>
-            <Link href="/" className="text-blue-300 transition hover:text-blue-200">
-              Điều khoản
-            </Link>
-            <Link href="/" className="text-blue-300 transition hover:text-blue-200">
-              Liên hệ
-            </Link>
+      <footer className="mt-24 border-t-2 border-black bg-zinc-900 py-4 text-white md:py-5">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row sm:gap-5">
+            <Image 
+              src="/logo/logo2.png" 
+              alt="roomieVerse" 
+              width={600} 
+              height={150}
+              className="h-32 w-auto -my-4"
+            />
+            <div className="flex justify-center gap-8 text-sm font-medium">
+              <Link href="/" className="text-blue-300 transition hover:text-blue-200">
+                Về chúng tôi
+              </Link>
+              <Link href="/" className="text-blue-300 transition hover:text-blue-200">
+                Điều khoản
+              </Link>
+              <Link href="/" className="text-blue-300 transition hover:text-blue-200">
+                Liên hệ
+              </Link>
+            </div>
           </div>
         </div>
       </footer>

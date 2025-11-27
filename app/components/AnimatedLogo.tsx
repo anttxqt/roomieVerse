@@ -99,7 +99,7 @@ export default function AnimatedLogo() {
             <SparkleIcon key={sparkle.id} {...sparkle} />
           ))}
           <Image
-            src="/roomieverselogowpic.png"
+            src="/logo/logo1.png"
             alt="roomieVerse"
             width={1000}
             height={250}

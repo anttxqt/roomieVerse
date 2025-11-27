@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { SparklesText } from "./components/sparkles-text";
+import HeaderLogo from "./components/HeaderLogo";
 
 export default function LandingPage() {
   return (
@@ -9,15 +10,7 @@ export default function LandingPage() {
       <header className="sticky top-0 z-50 border-b-2 border-black bg-white backdrop-blur-md">
         <div className="wrapper py-4 md:py-5">
           <div className="flex items-center justify-between">
-            <Link href="/" className="group flex items-center">
-              <Image 
-                src="/roomieverselogowpic.png" 
-                alt="roomieVerse" 
-                width={480} 
-                height={120}
-                className="h-28 w-auto transition-transform duration-200 group-hover:scale-105"
-              />
-            </Link>
+            <HeaderLogo className="h-28" />
 
             <div className="flex items-center gap-3 sm:gap-4">
               <Link
@@ -86,10 +79,16 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t-2 border-black bg-gradient-to-br from-black to-gray-900 py-10 text-white md:py-12">
+      <footer className="border-t-2 border-black bg-gradient-to-br from-black to-gray-900 py-4 text-white md:py-5">
         <div className="wrapper">
-          <div className="flex flex-col items-center justify-between gap-5 sm:flex-row sm:gap-6">
-            <p className="text-sm font-bold sm:text-base">© 2024 roomieVerse</p>
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row sm:gap-5">
+            <Image 
+              src="/logo/logo2.png" 
+              alt="roomieVerse" 
+              width={600} 
+              height={150}
+              className="h-32 w-auto -my-4"
+            />
             <div className="flex flex-wrap justify-center gap-4 text-sm font-bold sm:gap-6">
               <Link
                 href="/share"

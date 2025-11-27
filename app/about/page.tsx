@@ -117,7 +117,7 @@ export default function AboutPage() {
           <div className="flex items-center justify-between">
             <Link href="/" className="group flex items-center">
               <Image
-                src="/roomieverselogowpic.png"
+                src="/logo/logo1.png"
                 alt="roomieVerse"
                 width={480}
                 height={120}
@@ -267,10 +267,16 @@ export default function AboutPage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t-2 border-black bg-gradient-to-br from-black to-gray-900 py-10 text-white md:py-12">
+      <footer className="border-t-2 border-black bg-gradient-to-br from-black to-gray-900 py-4 text-white md:py-5">
         <div className="wrapper">
-          <div className="flex flex-col items-center justify-between gap-5 sm:flex-row sm:gap-6">
-            <p className="text-sm font-bold sm:text-base">© 2024 roomieVerse</p>
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row sm:gap-5">
+            <Image 
+              src="/logo/logo2.png" 
+              alt="roomieVerse" 
+              width={600} 
+              height={150}
+              className="h-32 w-auto -my-4"
+            />
             <div className="flex flex-wrap justify-center gap-4 text-sm font-bold sm:gap-6">
               <Link
                 href="/share"
