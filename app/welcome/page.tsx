@@ -28,7 +28,7 @@ export default function WelcomePage() {
           <div className="flex flex-wrap items-center justify-between gap-6">
             <Link href="/" className="flex items-center gap-3">
               <Image
-                src="/roomieverselogowpic.png"
+                src="/logo/logo1.png"
                 alt="roomieVerse"
                 width={480}
                 height={120}

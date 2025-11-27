@@ -35,7 +35,7 @@ export default function ProfilePage() {
           <div className="flex flex-wrap items-center justify-between gap-6">
             <Link href="/" className="flex items-center">
               <Image
-                src="/roomieverselogowpic.png"
+                src="/logo/logo1.png"
                 alt="roomieVerse"
                 width={480}
                 height={120}
