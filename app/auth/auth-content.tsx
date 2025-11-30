@@ -35,12 +35,6 @@ export default function AuthContent() {
         </div>
         <div className="mt-8 flex flex-wrap gap-3">
           <Link
-            href="/about"
-            className="btn-secondary text-sm"
-          >
-            Tìm hiểu thêm về roomieVerse
-          </Link>
-          <Link
             href="/"
             className="btn-primary text-sm"
           >

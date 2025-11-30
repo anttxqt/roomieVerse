@@ -4,10 +4,23 @@ import Link from "next/link";
 import Image from "next/image";
 import { SparklesText } from "../components/sparkles-text";
 import HeaderLogo from "../components/HeaderLogo";
+import ShareFooter from "../components/ShareFooter";
+import ProtectedRoute from "../components/ProtectedRoute";
+import { useAuth } from "../contexts/AuthContext";
+import { useRouter } from "next/navigation";
 
 export default function HomePage() {
+  const { logout } = useAuth();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    logout();
+    router.push("/auth");
+  };
+
   return (
-    <div className="min-h-screen bg-white">
+    <ProtectedRoute>
+      <div className="min-h-screen bg-white">
       {/* Header - Logged In */}
       <header className="sticky top-0 z-50 border-b-2 border-black bg-white backdrop-blur-md">
         <div className="wrapper py-4 md:py-5">
@@ -16,23 +29,17 @@ export default function HomePage() {
 
             <div className="flex items-center gap-3 sm:gap-4">
               <Link
-                href="/welcome"
-                className="hidden text-sm font-medium text-zinc-600 hover:text-black sm:block sm:text-base"
-              >
-                Welcome tour
-              </Link>
-              <Link
                 href="/profile"
                 className="hidden text-sm font-medium text-zinc-600 hover:text-black sm:block sm:text-base"
               >
                 Hồ sơ
               </Link>
-              <Link
-                href="/auth"
+              <button
+                onClick={handleLogout}
                 className="btn-primary text-sm sm:text-base"
               >
                 Đăng xuất
-              </Link>
+              </button>
             </div>
           </div>
         </div>
@@ -58,8 +65,8 @@ export default function HomePage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link href="/share" className="btn-primary text-base sm:text-lg px-8 py-4">
-              Xem tin đăng →
+            <Link href="/roommate" className="btn-primary text-base sm:text-lg px-8 py-4">
+              Xem tin đăng
             </Link>
             <Link href="/profile" className="btn-secondary text-base sm:text-lg px-8 py-4">
               Cập nhật hồ sơ
@@ -78,54 +85,15 @@ export default function HomePage() {
             <p className="mb-6 text-base font-bold sm:mb-8 sm:text-lg md:text-xl">
               Đăng tin hoàn toàn miễn phí. Kết nối ngay hôm nay!
             </p>
-            <Link href="/share" className="btn-primary inline-flex items-center gap-2 text-base sm:text-lg px-8 py-4">
+            <Link href="/roommate" className="btn-primary text-base sm:text-lg px-8 py-4">
               Bắt đầu ngay
-              <span className="transition-transform duration-300 group-hover:translate-x-1">🚀</span>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t-2 border-black bg-gradient-to-br from-black to-gray-900 py-4 text-white md:py-5">
-        <div className="wrapper">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row sm:gap-5">
-            <Image 
-              src="/logo/logo2.png" 
-              alt="roomieVerse" 
-              width={600} 
-              height={150}
-              className="h-32 w-auto -my-4"
-            />
-            <div className="flex flex-wrap justify-center gap-4 text-sm font-bold sm:gap-6">
-              <Link
-                href="/share"
-                className="transition-all duration-200 hover:scale-110 hover:text-pink-400"
-              >
-                Tìm phòng
-              </Link>
-              <Link
-                href="/auth"
-                className="transition-all duration-200 hover:scale-110 hover:text-blue-300"
-              >
-                Đăng ký
-              </Link>
-              <Link
-                href="/home"
-                className="transition-all duration-200 hover:scale-110 hover:text-purple-400"
-              >
-                Trang chủ
-              </Link>
-              <Link
-                href="/profile"
-                className="transition-all duration-200 hover:scale-110 hover:text-yellow-300"
-              >
-                Hồ sơ
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <ShareFooter />
     </div>
+    </ProtectedRoute>
   );
 }

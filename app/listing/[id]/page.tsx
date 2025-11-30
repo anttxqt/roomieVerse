@@ -122,7 +122,7 @@ export default async function ListingDetailPage({ params }: PageProps) {
               <Link href="/home" className="text-zinc-600 transition hover:text-black">
                 ← Quay lại
               </Link>
-              <Link href="/share" className="btn-primary">
+              <Link href="/roommate" className="btn-primary">
                 Đăng bài mới
               </Link>
             </nav>

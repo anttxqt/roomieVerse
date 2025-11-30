@@ -1,8 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { motion } from "framer-motion";
+import { useAuth } from "../contexts/AuthContext";
 
 type AuthMode = "login" | "signup";
 
@@ -14,6 +15,10 @@ interface AuthFormProps {
 export default function AuthForm({ bounceKey = 0, onModeChange }: AuthFormProps) {
   const [mode, setMode] = useState<AuthMode>("login");
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const { login } = useAuth();
+
+  const returnUrl = searchParams.get("returnUrl") || "/home";
 
   function handleModeChange(newMode: AuthMode) {
     setMode(newMode);
@@ -22,17 +27,18 @@ export default function AuthForm({ bounceKey = 0, onModeChange }: AuthFormProps)
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    router.push("/home");
+    login();
+    router.push(returnUrl);
   }
 
   function handleGoogleLogin() {
-    // TODO: Implement Google OAuth
-    router.push("/home");
+    login();
+    router.push(returnUrl);
   }
 
   function handlePhoneLogin() {
-    // TODO: Implement Phone login
-    router.push("/home");
+    login();
+    router.push(returnUrl);
   }
 
   return (
@@ -88,7 +94,12 @@ export default function AuthForm({ bounceKey = 0, onModeChange }: AuthFormProps)
       {/* Social Login Buttons - Only show on Login */}
       {mode === "login" && (
         <>
-          <div className="mt-8 flex gap-4">
+          <div className="mt-8 flex items-center gap-4">
+            <div className="h-0.5 flex-1 bg-zinc-200"></div>
+            <span className="text-sm font-bold text-zinc-700">Đăng nhập bằng</span>
+            <div className="h-0.5 flex-1 bg-zinc-200"></div>
+          </div>
+          <div className="mt-6 flex gap-4">
             <button
               type="button"
               onClick={handleGoogleLogin}

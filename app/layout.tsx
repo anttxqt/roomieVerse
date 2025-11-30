@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { AuthProvider } from "./contexts/AuthContext";
 
 const googleSans = localFont({
   src: [
@@ -57,7 +58,9 @@ export default function RootLayout({
         className={`${googleSans.variable} antialiased`}
         style={{ fontFamily: 'var(--font-google-sans), "Google Sans", system-ui, sans-serif' }}
       >
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
