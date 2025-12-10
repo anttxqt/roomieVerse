@@ -54,14 +54,14 @@ export default function SplitCTASection({
               onPostClick?.();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="btn-primary text-base w-full"
+            className="btn-secondary text-base w-full max-w-[200px] mx-auto"
           >
             {leftButton}
           </button>
         ) : (
           <Link
             href={`/auth?returnUrl=${leftReturnUrl}`}
-            className="btn-secondary text-base block"
+            className="btn-secondary text-base block w-full max-w-[200px] mx-auto"
           >
             Đăng nhập để đăng tin
           </Link>
@@ -76,7 +76,7 @@ export default function SplitCTASection({
         </p>
         <Link
           href={rightLink}
-          className="btn-secondary text-base block"
+          className="btn-secondary text-base block w-full max-w-[200px] mx-auto"
         >
           {rightButton}
         </Link>
